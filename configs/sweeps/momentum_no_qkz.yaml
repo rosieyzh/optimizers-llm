@@ -1,0 +1,39 @@
+# 42 jobs
+wandb:
+  group: momentum-sweep-no-qkz
+softmax_auxiliary_loss: false
+model:
+  attention_layer_norm: false
+optimizer:
+  weight_decay: 0.0
+  eps: 1.0e-15
+  beta_1: 0.95
+save_num_unsharded_checkpoints_to_keep: 1
+sweep:
+  - optimizer:
+      name: adamw
+      learning_rate: 3.16e-3
+      beta_0: [0.0, 0.5, 0.8, 0.9, 0.95, 0.98, 0.99]
+  - optimizer:
+      name: signsgd
+      learning_rate: 3.16e-4
+      beta_0: [0.0, 0.5, 0.8, 0.9, 0.95, 0.98, 0.99]
+  - optimizer:
+      name: lionw
+      learning_rate: 3.16e-4
+      beta_0: [0.0, 0.5, 0.8, 0.9, 0.95, 0.98, 0.99]
+  - optimizer:
+      name: adafactorw
+      learning_rate: 3.16e-3
+      neuron_only: false
+      beta_0: [0.0, 0.5, 0.8, 0.9, 0.95, 0.98, 0.99]
+  - optimizer: 
+      name: adalayerw # corrected novograd
+      learning_rate: 3.16e-3
+      att_correction: true
+      lastlayer_correction: true
+      beta_0: [0.0, 0.5, 0.8, 0.9, 0.95, 0.98, 0.99]
+  - optimizer:
+      name: sgdw
+      learning_rate: 1.0
+      beta_0: [0.0, 0.5, 0.8, 0.9, 0.95, 0.98, 0.99]

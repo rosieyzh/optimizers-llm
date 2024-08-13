@@ -1,0 +1,44 @@
+# 42 jobs
+wandb:
+  group: wd-sweep
+optimizer:
+  eps: 1.0e-15
+  beta_0: 0.9
+  beta_1: 0.95
+save_num_unsharded_checkpoints_to_keep: 1
+sweep:
+  - optimizer:
+      name: adafactorw
+      learning_rate: 3.16e-3
+      decouple_weight_decay: true
+      neuron_only: false
+      weight_decay: [0.0, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1]
+  - optimizer:
+      name: adamw
+      learning_rate: 3.16e-3
+      decouple_weight_decay: true
+      weight_decay: [0.0, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1]
+  - optimizer:
+      name: sgdw
+      beta_0: 0.98
+      learning_rate: 1.0
+      decouple_weight_decay: true
+      weight_decay: [0.0, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1]
+  - optimizer:
+      name: signsgd
+      learning_rate: 3.16e-4
+      decouple_weight_decay: true
+      weight_decay: [0.0, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1]
+  - optimizer:
+      name: lionw
+      learning_rate: 3.16e-4
+      decouple_weight_decay: true
+      weight_decay: [0.0, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1]
+  - optimizer: 
+      name: adalayerw # corrected novograd
+      learning_rate: 3.16e-3
+      att_correction: true
+      lastlayer_correction: true
+      decouple_weight_decay: true
+      weight_decay: [0.0, 1.0e-6, 1.0e-5, 1.0e-4, 1.0e-3, 1.0e-2, 1.0e-1]
+

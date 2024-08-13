@@ -1,0 +1,101 @@
+# 24 jobs
+# Only for 150m model
+wandb:
+  group: bs-all-1
+optimizer:
+  eps: 1.0e-15
+  beta_0: 0.9
+  beta_1: 0.95
+  weight_decay: 0.0
+  att_correction: true # for adalayer
+  lastlayer_correction: true # for adalayer
+save_num_unsharded_checkpoints_to_keep: 1
+sweep:
+  - optimizer:
+      name: [adamw, adafactorw, adalayerw]
+      learning_rate: 3.16e-3
+    global_train_batch_size: 128
+    max_duration: 50000
+    scheduler:
+      t_warmup: 5000
+  - optimizer:
+      name: [adamw, adafactorw, adalayerw]
+      learning_rate: 3.16e-3
+    global_train_batch_size: 256
+    max_duration: 25000
+    scheduler:
+      t_warmup: 2500
+  - optimizer:
+      name: [adamw, adafactorw, adalayerw]
+      learning_rate: 3.16e-3
+    global_train_batch_size: 512
+    max_duration: 12500
+    scheduler:
+      t_warmup: 1250
+  - optimizer:
+      name: [adamw, adafactorw, adalayerw]
+      learning_rate: 3.16e-3
+    global_train_batch_size: 1024
+    max_duration: 6250
+    scheduler:
+      t_warmup: 625
+  - optimizer:
+      name: [signsgd, lionw]
+      learning_rate: 3.16e-4
+    global_train_batch_size: 128
+    max_duration: 50000
+    scheduler:
+      t_warmup: 5000
+  - optimizer:
+      name: [signsgd, lionw]
+      learning_rate: 3.16e-4
+    global_train_batch_size: 256
+    max_duration: 25000
+    scheduler:
+      t_warmup: 2500
+  - optimizer:
+      name: [signsgd, lionw]
+      learning_rate: 3.16e-4
+    global_train_batch_size: 512
+    max_duration: 12500
+    scheduler:
+      t_warmup: 1250
+  - optimizer:
+      name: [signsgd, lionw]
+      learning_rate: 3.16e-4
+    global_train_batch_size: 1024
+    max_duration: 6250
+    scheduler:
+      t_warmup: 625
+  - optimizer:
+      name: sgdw
+      learning_rate: 1.0
+      beta_0: 0.98
+    global_train_batch_size: 128
+    max_duration: 50000
+    scheduler:
+      t_warmup: 5000
+  - optimizer:
+      name: sgdw
+      learning_rate: 1.0
+      beta_0: 0.98
+    global_train_batch_size: 256
+    max_duration: 25000
+    scheduler:
+      t_warmup: 2500
+  - optimizer:
+      name: sgdw
+      learning_rate: 1.0
+      beta_0: 0.98
+    global_train_batch_size: 512
+    max_duration: 12500
+    scheduler:
+      t_warmup: 1250
+  - optimizer:
+      name: sgdw
+      learning_rate: 1.0
+      beta_0: 0.98
+    global_train_batch_size: 1024
+    max_duration: 6250
+    scheduler:
+      t_warmup: 625

@@ -1,0 +1,45 @@
+# 42 jobs
+# Only for 150m model, need to change t_warmup for larger models
+wandb:
+  group: warmup-sweep
+optimizer:
+  eps: 1.0e-15
+  beta_0: 0.9
+  beta_1: 0.95
+  weight_decay: 0.0
+save_num_unsharded_checkpoints_to_keep: 1
+sweep:
+  - optimizer:
+      name: adamw
+      learning_rate: 3.16e-3
+    scheduler:
+      t_warmup: [500, 1250, 2500, 5000, 10000, 15000, 20000]
+  - optimizer:
+      name: sgdw
+      beta_0: 0.98
+      learning_rate: 1.0
+    scheduler:
+      t_warmup: [500, 1250, 2500, 5000, 10000, 15000, 20000]
+  - optimizer:
+      name: signsgd
+      learning_rate: 3.16e-4
+    scheduler:
+      t_warmup: [500, 1250, 2500, 5000, 10000, 15000, 20000]
+  - optimizer:
+      name: lionw
+      learning_rate: 3.16e-4
+    scheduler:
+      t_warmup: [500, 1250, 2500, 5000, 10000, 15000, 20000]
+  - optimizer:
+      name: adafactorw
+      learning_rate: 3.16e-3
+      neuron_only: false
+    scheduler:
+      t_warmup: [500, 1250, 2500, 5000, 10000, 15000, 20000]
+  - optimizer: 
+      name: adalayerw # corrected novograd
+      learning_rate: 3.16e-3
+      att_correction: true
+      lastlayer_correction: true
+    scheduler:
+      t_warmup: [500, 1250, 2500, 5000, 10000, 15000, 20000]

@@ -1,0 +1,34 @@
+# 24 jobs
+wandb:
+  group: eps-sweep
+device_train_microbatch_size: 128
+optimizer:
+  weight_decay: 0.0
+  beta_0: 0.9
+  beta_1: 0.98
+save_num_unsharded_checkpoints_to_keep: 1
+sweep:
+  - optimizer:
+      name: adamw
+      learning_rate: 3.16e-3
+      eps: [1.0e-15, 1.0e-12, 1.0e-8, 1.0e-5]
+  - optimizer:
+      name: lionw
+      learning_rate: 3.16e-4
+      eps: [1.0e-15, 1.0e-12, 1.0e-8, 1.0e-5]
+  - optimizer:
+      name: adafactorw
+      learning_rate: 3.16e-3
+      neuron_only: true
+      eps: [1.0e-15, 1.0e-12, 1.0e-8, 1.0e-5]
+  - optimizer:
+      name: adafactorw
+      learning_rate: 3.16e-3
+      neuron_only: false
+      eps: [1.0e-15, 1.0e-12, 1.0e-8, 1.0e-5]
+  - optimizer: 
+      name: adalayerw
+      learning_rate: 3.16e-3
+      att_correction: true
+      lastlayer_correction: true
+      eps: [1.0e-15, 1.0e-12, 1.0e-8, 1.0e-5]
